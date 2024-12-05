@@ -1,0 +1,30 @@
+<!-- create_product.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+</head>
+<body>
+    <h1>Crear Producto</h1>
+    <form action="{{ url_for('manage_products') }}" method="POST">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" required><br>
+
+        <label for="image">Imagen:</label>
+        <input type="text" name="image" id="image" required><br>
+
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" required></textarea><br>
+
+        <label for="price">Precio:</label>
+        <input type="text" name="price" id="price" required><br>
+
+        <label for="category">Categoría:</label>
+        <input type="text" name="category" id="category" required><br>
+
+        <button type="submit">Crear Producto</button>
+    </form>
+</body>
+</html>
