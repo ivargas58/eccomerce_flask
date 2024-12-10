@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pedido</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Confirmación de Pedido</h2>
+        
+        <h3>Detalles de Envío:</h3>
+        <p><strong>Dirección:</strong> {{ shipping_details['address'] }}</p>
+        <p><strong>Teléfono:</strong> {{ shipping_details['phone_number'] }}</p>
+        <p><strong>Método de Pago:</strong> {{ shipping_details['payment_method'] }}</p>
+
+        <h3>Resumen de Pedido:</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order_items %}
+                <tr>
+                    <td>{{ item['product_name'] }}</td>
+                    <td>{{ item['quantity'] }}</td>
+                    <td>${{ item['price'] }}</td>
+                    <td>${{ item['quantity'] * item['price'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4>Total: ${{ order['total'] }}</h4>
+        
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Regresar al Dashboard</a>
+    </div>
+</body>
+</html>
